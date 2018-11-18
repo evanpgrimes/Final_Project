@@ -38,7 +38,6 @@ class Questions:
         return(len(self.questions))
 
     def askQuestion(self):
-
         idx = random.randint(0,len(self.questions)-1)
         question = self.questions[idx]
         answer = self.answers[idx]
@@ -75,8 +74,16 @@ def readQuestions(QA,file):
 
         QA.answerChoices.append(choices)
 
-def level(currentLevel,questions,player):
+def level(currentLevel,player):
     player.resetScore()
+    #Question reader
+    #
+    questions = Questions()
+    readQuestions(questions,str("test"+str(currentLevel)))
+    print(questions.questions)
+    print(questions.answerChoices)
+    print(questions.answers)
+    #
     print(player.name + "'s Turn: \n")
     for i in range(0,10):
         question, Correctanswer, answerChoices, idx =questions.askQuestion()
@@ -100,24 +107,19 @@ def main():
     name= input("What is your name? \n")
     #initate Player
     Student= Player(name)
-    #Question reader
-    #
-    QA = Questions()
-    readQuestions(QA,"test")
-    print(QA.questions)
-    print(QA.answerChoices)
-    print(QA.answers)
-    #
-    level(1,QA,Student)
+
+    currentLevel=1
+    level(1,Student)
     keepPlaying = True
     while keepPlaying:
         if Student.score >=7.5:
             print("Congratulations, You passed the currentLevel \n")
+            currentLevel+=1
         else:
             print("Sorry, you failed")
             replayLevel=input("Would you like to play the same level again? (y/n) \n")
             if replayLevel=="y":
-                level(1,QA,Student)
+                level(1,Student)
                 keepPlaying = False
     print("Have a nice day \n")
 main()
