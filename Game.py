@@ -62,10 +62,12 @@ def readQuestions(QA,file):
         
         line = line.split("~")
 
+        # Get Questions and Answers
         QA.questions.append(line[0])
         QA.answers.append(line[-1])
         choices = []
 
+        # Get answer choices
         for i in range(1,len(line)-1):
             choices.append(line[i])
 
