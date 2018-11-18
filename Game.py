@@ -97,6 +97,7 @@ def level(currentLevel,player):
             player.updateScore(1)
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
         else:
+            questions.delQuestion(question,Correctanswer,answerChoices,idx)
             print("\nYou are incorrect \n")
 
 
