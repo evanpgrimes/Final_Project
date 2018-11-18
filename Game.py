@@ -63,8 +63,17 @@ def readQuestions(QA,file):
         line = line.split("~")
 
         QA.questions.append(line[0])
-        QA.answerChoices.append(line[1:5])
-        QA.answers.append(line[5])
+        QA.answers.append(line[-1])
+        choices = []
+
+        for i in range(1,len(line)-1):
+            choices.append(line[i])
+
+        QA.answerChoices.append(choices)
+
+
+
+
 
 def main():
     QA = Questions()
