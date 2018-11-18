@@ -77,7 +77,7 @@ def readQuestions(QA,file):
 
 def main():
     QA = Questions()
-    readQuestions(QA,"test")
+    readQuestions(QA,"Level1_Questions.txt")
     print(QA.questions)
     print(QA.answerChoices)
     print(QA.answers)
