@@ -94,7 +94,6 @@ def level(currentLevel,player):
             player.updateScore(1)
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
         else:
-            questions.delQuestion(question,Correctanswer,answerChoices,idx)
             print("\nYou are incorrect \n")
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
@@ -113,11 +112,13 @@ def main():
         if Student.score >=7.0:
             print("Congratulations, You passed the currentLevel \n")
             currentLevel+=1
+            keepPlaying = False
         else:
             print("Sorry, you failed")
             replayLevel=input("Would you like to play the same level again? (y/n) \n")
             if replayLevel=="y":
                 level(1,Student)
+            else:
                 keepPlaying = False
     print("Have a nice day \n")
 main()
