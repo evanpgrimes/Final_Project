@@ -107,9 +107,21 @@ def main():
     name= input("What is your name? \n")
     #initate Player
     Student= Player(name)
+<<<<<<< HEAD
 
     currentLevel=1
     level(1,Student)
+=======
+    #Question reader
+    #
+    QA = Questions()
+    readQuestions(QA,"Level1_Questions.txt")
+    print(QA.questions)
+    print(QA.answerChoices)
+    print(QA.answers)
+    #
+    level(1,QA,Student)
+>>>>>>> 826edf8e7ba0b3801cd788d4f68af6d65758d4c4
     keepPlaying = True
     while keepPlaying:
         if Student.score >=7.5:
