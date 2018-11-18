@@ -79,7 +79,7 @@ def level(currentLevel,player):
     #Question reader
     #
     questions = Questions()
-    readQuestions(questions,str("test"+str(currentLevel)))
+    readQuestions(questions,str("Questions_Level_"+str(currentLevel)+".txt"))
     #
     print(player.name + "'s Turn: \n")
     for i in range(0,10):
