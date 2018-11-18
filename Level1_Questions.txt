@@ -1,5 +1,10 @@
-What is 2 + 2? ~A. 4 ~B. 3 ~C. 5 ~D. 6 ~A
+What is 23 + 23? ~A. 46 ~B. 64 ~C. 44 ~D. 2323 ~A
 Who was the first president of the United States? ~A. Thomas Jefferson ~B. Adam Smith ~C. Benjamin Franklin ~D. George Washington ~D
 Water can be a solid, liquid, or gas. ~A. True ~B. False ~A
-How many hours is a full day? ~A 23 hours ~B 24 hours ~C 25 hours ~D 26 hours ~B
-What country is home to the kangaroo? ~A Australia ~B 
+How many hours is a full day? ~A. 23 hours ~B. 24 hours ~C. 25 hours ~D. 26 hours ~B
+What country is home to the kangaroo? ~A. Australia ~B. New Zealand ~C. China ~D. Peru ~A
+How many planets are in our solar system (including Pluto)? ~A. 7 ~B. 8 ~C. 9 ~D. 10 ~C
+Our galaxy is named The Milky Way. ~A. True ~B. False ~A
+Benjamin Franklin was a U.S. president. ~A. True ~B. False ~B
+What is 50 - 25? ~A. 20 ~B. 35 ~C. 15 ~D. 25 ~D
+Water is also known as H2O. ~A. True ~B. False ~A
