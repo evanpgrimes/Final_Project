@@ -80,9 +80,6 @@ def level(currentLevel,player):
     #
     questions = Questions()
     readQuestions(questions,str("test"+str(currentLevel)))
-    print(questions.questions)
-    print(questions.answerChoices)
-    print(questions.answers)
     #
     print(player.name + "'s Turn: \n")
     for i in range(0,10):
@@ -98,6 +95,7 @@ def level(currentLevel,player):
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
         else:
             print("\nYou are incorrect \n")
+            questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
 
 
@@ -110,7 +108,7 @@ def main():
     level(1,Student)
     keepPlaying = True
     while keepPlaying:
-        if Student.score >=7.5:
+        if Student.score >=7.0:
             print("Congratulations, You passed the currentLevel \n")
             currentLevel+=1
         else:
