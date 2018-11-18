@@ -107,6 +107,7 @@ def main():
     #initate Player
     Student= Player(name)
     level(1,Student)
+    currentLevel=1
     keepPlaying = True
     while keepPlaying:
         if Student.score >=7.0:
