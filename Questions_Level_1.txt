@@ -8,3 +8,6 @@ Our galaxy is named The Milky Way. ~A. True ~B. False ~A
 Benjamin Franklin was a U.S. president. ~A. True ~B. False ~B
 What is 50 - 25? ~A. 20 ~B. 35 ~C. 15 ~D. 25 ~D
 Water is also known as H2O. ~A. True ~B. False ~A
+How many legs does a spider have? ~A. 6 ~B. 7 ~C. 8 ~D. 10 ~C
+Alligators are considered mammals. ~A. True ~B. False ~A
+What makes things fall to the ground? ~A. Weight ~B. Pull ~C. Push ~D. Gravity ~D
