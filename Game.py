@@ -106,9 +106,11 @@ def level(currentLevel,player):
     startButton = tkinter.Button(newWindow, text="Start", bg="grey", fg="black", command=onClickStart)
     startButton.grid(column=1, row=10)
 
-    newWindow.mainloop()
 
-    for i in range(0,9):
+    newWindow.mainloop()
+    #newWindow.protocol("WM_DELETE_WINDOW",sys.exit())
+
+    for i in range(0,2):
 
         qWindow = tkinter.Tk()
         qWindow.geometry("700x700")
@@ -130,7 +132,9 @@ def level(currentLevel,player):
         EnterButton = tkinter.Button(qWindow, text="Enter", bg="grey", fg="black", command=onClickEnter)
         EnterButton.grid(column=1, row=18)
 
+        
         qWindow.mainloop()
+        #qWindow.protocol("WM_DELETE_WINDOW",sys.exit())
         global playerAnswer
 
         playerAnswer = playerAnswer.upper()
@@ -152,6 +156,7 @@ def level(currentLevel,player):
             player.updateScore(1)
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
+            #ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
             ansWindow.mainloop()
           
         else:
@@ -168,7 +173,9 @@ def level(currentLevel,player):
 
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
+            
             ansWindow.mainloop()
+            #ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
         
 def main():
 
@@ -193,6 +200,11 @@ def main():
         userName = str(text.get())
         window.destroy()
 
+    def onClickRepeat():
+        global replayLevel
+        replayLevel = str(replay.get())
+        Scorewindow.destroy()
+
     label1 = tkinter.Label(window, text="\tWelcome to our Education Game!\n\n", font=("Times New Roman", 20))
     label1.grid(column=1, row=2)
 
@@ -214,12 +226,10 @@ def main():
     
     window.mainloop()
     #window.protocol("WM_DELETE_WINDOW",sys.exit())
+    
 
     global userName
     
-
-
-
 
     #Game name
     #initate Player
@@ -229,15 +239,56 @@ def main():
     keepPlaying = True
     while keepPlaying:
         if Student.score >=7.0:
-            print("Congratulations, You passed the currentLevel \n")
+            Scorewindow = tkinter.Tk()
+            Scorewindow.geometry("700x700")
+            Scorewindow.title("level " + str(currentLevel) + " Score")
+
+            label1 = tkinter.Label(Scorewindow, text="\tScore:\t" + str(Student.score), font=("Times New Roman", 20))
+            label1.grid(column=1, row=2)
+
+
+            label2 = tkinter.Label(Scorewindow, text="\tYou Passed Level " + str(currentLevel) + "!\n\n", font=("Times New Roman", 20))
+            label2.grid(column=1, row=5)
+
+            quit = tkinter.Button(Scorewindow, text="Quit", bg="white", fg="red", command=sys.exit)
+            quit.grid(column=1, row=8)
+
+            Scorewindow.mainloop()
+
             currentLevel+=1
             keepPlaying = False
         else:
-            print("Sorry, you failed")
-            replayLevel=input("Would you like to play the same level again? (y/n) \n")
+
+            Scorewindow = tkinter.Tk()
+            Scorewindow.geometry("700x700")
+            Scorewindow.title("level " + str(currentLevel) + " Score")
+
+            label1 = tkinter.Label(Scorewindow, text="\tScore:\t" + str(Student.score), font=("Times New Roman", 20))
+            label1.grid(column=1, row=2)
+
+
+            label2 = tkinter.Label(Scorewindow, text="\tYou Failed Level " + str(currentLevel) + "\n\n", font=("Times New Roman", 20))
+            label2.grid(column=1, row=5)
+
+
+            labelTxt = "Would you like to play the same level again? (y/n) \n"
+            label3 = tkinter.Label(Scorewindow, text=str(labelTxt), font=("Times New Roman", 20))
+            label3.grid(column=1, row=10)
+            replay = tkinter.Entry(Scorewindow, width=10)
+            replay.grid(column=1, row=12)
+
+            RepeatButton = tkinter.Button(Scorewindow, text="Enter", bg="grey", fg="black", command=onClickRepeat)
+            RepeatButton.grid(column=1, row=18)
+
+            Scorewindow.mainloop()
+
+            global replayLevel
+
+        
             if replayLevel=="y":
                 level(1,Student)
             else:
                 keepPlaying = False
+                sys.exit()
     print("Have a nice day \n")
 main()
