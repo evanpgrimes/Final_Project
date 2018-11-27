@@ -290,5 +290,4 @@ def main():
             else:
                 keepPlaying = False
                 sys.exit()
-    print("Have a nice day \n")
 main()
