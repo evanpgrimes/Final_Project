@@ -1,6 +1,6 @@
 # Learning Game
 
-import random, tkinter, tkinter.ttk
+import random, tkinter, tkinter.ttk, sys
 class Player:
 
     def __init__(self, name):
@@ -75,36 +75,155 @@ def readQuestions(QA,file):
         QA.answerChoices.append(choices)
 
 def level(currentLevel,player):
+    
+    def onClickStart():
+        newWindow.destroy()
+
+    def onClickEnter():
+        global playerAnswer
+        playerAnswer = str(Answer.get())
+        qWindow.destroy()
+    
+    def onClickNext():
+        ansWindow.destroy()
+
     player.resetScore()
     #Question reader
     #
     questions = Questions()
     readQuestions(questions,str("Questions_Level_"+str(currentLevel)+".txt"))
-    #
-    print(player.name + "'s Turn: \n")
-    for i in range(0,10):
+    
+    
+
+    newWindow = tkinter.Tk()
+    newWindow.geometry("550x300")
+    newWindow.title("Begin Game")
+
+    label1 = tkinter.Label(newWindow, text= "\n\n\tAre you ready to play level " + str(currentLevel) + ', ' + str(player.name) + " ?",font=("Times New Roman", 20))
+    label1.grid(column=1, row=2)
+
+
+    startButton = tkinter.Button(newWindow, text="Start", bg="grey", fg="black", command=onClickStart)
+    startButton.grid(column=1, row=10)
+
+    newWindow.mainloop()
+
+    for i in range(0,9):
+
+        qWindow = tkinter.Tk()
+        qWindow.geometry("700x700")
+        qWindow.title("Question " + str(i+1))
+
         question, Correctanswer, answerChoices, idx =questions.askQuestion()
-        print(question + "\n")
+
+        qString = ''
+        qString = qString + question + "\n"
         for i in range(0, len(answerChoices)):
-            print(answerChoices[i])
-        playerAnswer = input("\nWhat is your answer? \n")
+            qString = qString + "\n" + answerChoices[i]
+
+        labelTxt = qString
+        label2 = tkinter.Label(qWindow, text=str(labelTxt), font=("Times New Roman", 20))
+        label2.grid(column=1, row=6)
+        Answer = tkinter.Entry(qWindow, width=10)
+        Answer.grid(column=1, row=7)
+
+        EnterButton = tkinter.Button(qWindow, text="Enter", bg="grey", fg="black", command=onClickEnter)
+        EnterButton.grid(column=1, row=18)
+
+        qWindow.mainloop()
+        global playerAnswer
+
         playerAnswer = playerAnswer.upper()
+
+
+
         if playerAnswer== Correctanswer:
-            print("\nYou are correct \n")
+
+            ansWindow = tkinter.Tk()
+            ansWindow.geometry("700x700")
+            ansWindow.title("Result " + str(i+1))
+
+            label1 = tkinter.Label(ansWindow, text= "\n\tYou are correct!!", font=("Times New Roman", 20))
+            label1.grid(column=1, row=2)
+
+            nextButton = tkinter.Button(ansWindow, text="Next Question", bg="grey", fg="black", command=onClickNext)
+            nextButton.grid(column=1, row=5)
+
             player.updateScore(1)
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
+
+            ansWindow.mainloop()
+          
         else:
-            print("\nYou are incorrect \n")
+
+            ansWindow = tkinter.Tk()
+            ansWindow.geometry("700x700")
+            ansWindow.title("Result " + str(i+1))
+
+            label1 = tkinter.Label(ansWindow, text= "\n\tYou are incorrect", font=("Times New Roman", 20))
+            label1.grid(column=1, row=2)
+
+            nextButton = tkinter.Button(ansWindow, text="Next Question", bg="grey", fg="black", command=onClickNext)
+            nextButton.grid(column=1, row=5)
+
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
-
-
+            ansWindow.mainloop()
+        
 def main():
+
+    def onClickCombo():
+        label.configure(text="input: " + combo.get())
+
+    window = tkinter.Tk()
+    window.geometry("700x700")
+    window.title("Learning is Fun!")
+
+    # Switch frames
+    def raiseFrame(frame):
+        frame.tkraise()
+
+    # when quitButton is clicked, the GUI window will close and the application will be aborted
+    def closeWindow(wndw):
+        wndw.destroy()
+        exit() # comment this out to use command line
+
+    def onClickSubmit():
+        global userName   
+        userName = str(text.get())
+        window.destroy()
+
+    label1 = tkinter.Label(window, text="\tWelcome to our Education Game!\n\n", font=("Times New Roman", 20))
+    label1.grid(column=1, row=2)
+
+    labelTxt = "User Name (one word): "
+    label2 = tkinter.Label(window, text=str(labelTxt), font=("Times New Roman", 20))
+    label2.grid(column=1, row=6)
+    text = tkinter.Entry(window, width=10)
+    text.grid(column=1, row=7)
+
+    label3 = tkinter.Label(window, text="\n\n\tYou will begin on Level 1 with 0 Game Credits\n\n", font=("Times New Roman", 20))
+    label3.grid(column=1, row=10)
+
+    quitButton = tkinter.Button(window, text="Quit", bg="white", fg="red", command=lambda:closeWindow(window))
+    quitButton.grid(column=2, row=0)
+
+    submitButton = tkinter.Button(window, text="Submit", bg="grey", fg="black", command=onClickSubmit)
+    submitButton.grid(column=1, row=18)
+
+    
+    window.mainloop()
+    #window.protocol("WM_DELETE_WINDOW",sys.exit())
+
+    global userName
+    
+
+
+
+
     #Game name
-    print("Eductation Game \n")
-    name= input("What is your name? \n")
     #initate Player
-    Student= Player(name)
+    Student= Player(userName)
     level(1,Student)
     currentLevel=1
     keepPlaying = True
