@@ -110,7 +110,7 @@ def level(currentLevel,player):
     newWindow.mainloop()
     #newWindow.protocol("WM_DELETE_WINDOW",sys.exit())
 
-    for i in range(0,2):
+    for i in range(0,10):
 
         qWindow = tkinter.Tk()
         qWindow.geometry("700x700")
