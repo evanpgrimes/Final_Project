@@ -9,5 +9,10 @@ Benjamin Franklin was a U.S. president. ~A. True ~B. False ~B
 What is 50 - 25? ~A. 20 ~B. 35 ~C. 15 ~D. 25 ~D
 Water is also known as H2O. ~A. True ~B. False ~A
 How many legs does a spider have? ~A. 6 ~B. 7 ~C. 8 ~D. 10 ~C
-Alligators are considered mammals. ~A. True ~B. False ~A
+Alligators are considered mammals. ~A. True ~B. False ~B
 What makes things fall to the ground? ~A. Weight ~B. Pull ~C. Push ~D. Gravity ~D
+What colors are the starts in the United States flag? ~A. Blue ~B. White ~C. Red ~B
+Where does the president of the United States live? ~A. The White House ~B. The Capitol ~C. The Embassy ~D. Lincoln Memorial ~A
+Where is the Statue of Liberty? ~A. Chicago ~B. Manhattan ~C. New York ~D. San Antonio ~C
+There are 51 states in the United States. ~A. True ~B. False ~B
+Humans are mostly made of water. ~A. True ~B. False ~A
