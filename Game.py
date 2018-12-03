@@ -176,7 +176,33 @@ def level(currentLevel,player):
             
             ansWindow.mainloop()
             #ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
-        
+
+
+# Note: a perfect score reads in 10 but any other new score besides 0 resets
+# high score to that number
+def level_high_score(level, score):
+    file_1 = open("High Scores.txt", "r+")
+    scoreList = []
+    for line in file_1:
+        x = line.rstrip('\n')
+        scoreList.append(x)
+
+    file_1 = open("High Scores.txt", "w")
+    count = 1
+    line = 0
+    while count <= 3:
+        x = int(scoreList[line][-1])
+        if count == level:
+            if score > x:
+                file_1.write(scoreList[line][0:9] + str(score) + "\n")
+            else:
+                file_1.write(scoreList[line] + "\n")
+        else:
+            file_1.write(scoreList[line] + "\n")
+        count += 1
+        line += 1
+
+
 def main():
 
     def onClickCombo():
@@ -237,6 +263,7 @@ def main():
     level(1,Student)
     currentLevel=1
     keepPlaying = True
+    level_high_score(currentLevel,Student.score)
     while keepPlaying:
         if Student.score >=7.0:
             Scorewindow = tkinter.Tk()
