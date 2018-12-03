@@ -1,6 +1,8 @@
 # Learning Game
 
 import random, tkinter, tkinter.ttk, sys
+
+
 class Player:
 
     def __init__(self, name):
@@ -102,13 +104,11 @@ def level(currentLevel,player):
     label1 = tkinter.Label(newWindow, text= "\n\n\tAre you ready to play level " + str(currentLevel) + ', ' + str(player.name) + " ?",font=("Times New Roman", 20))
     label1.grid(column=1, row=2)
 
-
     startButton = tkinter.Button(newWindow, text="Start", bg="grey", fg="black", command=onClickStart)
     startButton.grid(column=1, row=10)
 
-
     newWindow.mainloop()
-    #newWindow.protocol("WM_DELETE_WINDOW",sys.exit())
+    # newWindow.protocol("WM_DELETE_WINDOW",sys.exit())
 
     for i in range(0,10):
 
@@ -132,14 +132,11 @@ def level(currentLevel,player):
         EnterButton = tkinter.Button(qWindow, text="Enter", bg="grey", fg="black", command=onClickEnter)
         EnterButton.grid(column=1, row=18)
 
-        
         qWindow.mainloop()
-        #qWindow.protocol("WM_DELETE_WINDOW",sys.exit())
+        # qWindow.protocol("WM_DELETE_WINDOW",sys.exit())
         global playerAnswer
 
         playerAnswer = playerAnswer.upper()
-
-
 
         if playerAnswer== Correctanswer:
 
@@ -156,7 +153,7 @@ def level(currentLevel,player):
             player.updateScore(1)
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
-            #ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
+            # ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
             ansWindow.mainloop()
           
         else:
@@ -173,9 +170,8 @@ def level(currentLevel,player):
 
             questions.delQuestion(question,Correctanswer,answerChoices,idx)
 
-            
             ansWindow.mainloop()
-            #ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
+            # ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
 
 
 # Note: a perfect score reads in 10 but any other new score besides 0 resets
@@ -249,16 +245,13 @@ def main():
     submitButton = tkinter.Button(window, text="Submit", bg="grey", fg="black", command=onClickSubmit)
     submitButton.grid(column=1, row=18)
 
-    
     window.mainloop()
-    #window.protocol("WM_DELETE_WINDOW",sys.exit())
-    
+    # window.protocol("WM_DELETE_WINDOW",sys.exit())
 
     global userName
-    
 
-    #Game name
-    #initate Player
+    # Game name
+    # initate Player
     Student= Player(userName)
     level(1,Student)
     currentLevel=1
@@ -293,10 +286,8 @@ def main():
             label1 = tkinter.Label(Scorewindow, text="\tScore:\t" + str(Student.score), font=("Times New Roman", 20))
             label1.grid(column=1, row=2)
 
-
             label2 = tkinter.Label(Scorewindow, text="\tYou Failed Level " + str(currentLevel) + "\n\n", font=("Times New Roman", 20))
             label2.grid(column=1, row=5)
-
 
             labelTxt = "Would you like to play the same level again? (y/n) \n"
             label3 = tkinter.Label(Scorewindow, text=str(labelTxt), font=("Times New Roman", 20))
@@ -311,10 +302,11 @@ def main():
 
             global replayLevel
 
-        
             if replayLevel=="y":
                 level(1,Student)
             else:
                 keepPlaying = False
                 sys.exit()
+
+
 main()
