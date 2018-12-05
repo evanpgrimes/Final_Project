@@ -1,1 +1,4 @@
+What is 23 * 4? ~A. 46 ~B. 64 ~C. 92 ~D. 232 ~C
+What is the largest planet in the solar system? ~A. Earth ~B. Pluto ~C. Saturn ~D. Jupiter ~D
+1's and 0's are used to represent numbers in Computer Science. ~A. True ~B. False ~A
 
