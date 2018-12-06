@@ -39,7 +39,7 @@ def pong_game():
     ball.color("white")
     ball.penup()
     ball.goto(0, 0)
-    ball.dx = 2
+    ball.dx = -2
     ball.dy = 2
 
     # Pen
@@ -50,7 +50,7 @@ def pong_game():
     pen.penup()
     pen.hideturtle()
     pen.goto(0, 260)
-    pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
+    pen.write("Player A: 0  COM: 0", align="center", font=("Courier", 24, "normal"))
 
     # Functions
     def paddle_a_up():
@@ -63,22 +63,22 @@ def pong_game():
         y -= 20
         paddle_a.sety(y)
 
-    def paddle_b_up():
+    def paddle_b_move(dy):
         y = paddle_b.ycor()
-        y += 20
-        paddle_b.sety(y)
-
-    def paddle_b_down():
-        y = paddle_b.ycor()
-        y -= 20
+        if paddle_b.ycor() > 300:
+            y += dy*(-.8)
+        elif paddle_b.ycor() < -300:
+            y += dy*(-.81)
+        else:
+            y += dy*.77
         paddle_b.sety(y)
 
     # Keyboard bindings
     wn.listen()
-    wn.onkeypress(paddle_a_up, "w")
-    wn.onkeypress(paddle_a_down, "s")
-    wn.onkeypress(paddle_b_up, "Up")
-    wn.onkeypress(paddle_b_down, "Down")
+    wn.onkeypress(paddle_a_up, "Up")
+    wn.onkeypress(paddle_a_down, "Down")
+    #wn.onkeypress(paddle_b_up, "Up")
+    #wn.onkeypress(paddle_b_down, "Down")
 
     # Main game loop
     while True:
@@ -87,6 +87,7 @@ def pong_game():
         # Move the ball
         ball.setx(ball.xcor() + ball.dx)
         ball.sety(ball.ycor() + ball.dy)
+        paddle_b_move(ball.dy)
 
         # Border checking
 
@@ -105,14 +106,16 @@ def pong_game():
         if ball.xcor() > 350:
             score_a += 1
             pen.clear()
-            pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+            pen.write("Player A: {}  COM: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+            paddle_b.goto(350, 0)
             ball.goto(0, 0)
             ball.dx *= -1
 
         elif ball.xcor() < -350:
             score_b += 1
             pen.clear()
-            pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+            pen.write("Player A: {}  COM: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+            paddle_b.goto(350, 0)
             ball.goto(0, 0)
             ball.dx *= -1
 
@@ -124,3 +127,8 @@ def pong_game():
         elif ball.xcor() > 340 and ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50:
             ball.dx *= -1
             os.system("afplay bounce.wav&")
+
+    wd.exitonclick()
+def main():
+    pong_game()
+main()
