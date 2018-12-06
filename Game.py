@@ -77,7 +77,7 @@ def readQuestions(QA,file):
         QA.answerChoices.append(choices)
 
 def level(currentLevel,player):
-    
+
     def onClickStart():
         newWindow.destroy()
 
@@ -85,7 +85,7 @@ def level(currentLevel,player):
         global playerAnswer
         playerAnswer = str(Answer.get())
         qWindow.destroy()
-    
+
     def onClickNext():
         ansWindow.destroy()
 
@@ -95,8 +95,8 @@ def level(currentLevel,player):
     #
     questions = Questions()
     readQuestions(questions,str("Questions_Level_"+str(currentLevel)+".txt"))
-    
-    
+
+
 
     newWindow = tkinter.Tk()
     newWindow.geometry("3000x2000")
@@ -159,7 +159,7 @@ def level(currentLevel,player):
 
             # ansWindow.protocol("WM_DELETE_WINDOW",sys.exit())
             ansWindow.mainloop()
-          
+
         else:
 
             ansWindow = tkinter.Tk()
@@ -340,7 +340,7 @@ def pong_game():
 
 
 def main():
-    
+
 
     def onClickCombo():
         label.configure(text="input: " + combo.get())
@@ -359,7 +359,7 @@ def main():
         exit() # comment this out to use command line
 
     def onClickSubmit():
-        global userName   
+        global userName
         userName = str(text.get())
         window.destroy()
 
@@ -369,7 +369,11 @@ def main():
         Scorewindow.destroy()
 
     def onClickPong():
-        pong_game()
+        if currentLevel == 1:
+            MiniGames.pong_game()
+        else:
+            MiniGames.snake()
+        #spaceinvaders.__main__()
 
     def onClickNext():
         Scorewindow.destroy()
@@ -414,7 +418,7 @@ def main():
     level(1,Student)
     currentLevel=1
     keepPlaying = True
-    
+
     while keepPlaying:
         level_high_score(currentLevel,Student.score)
 
@@ -444,7 +448,7 @@ def main():
             Scorewindow.mainloop()
 
             currentLevel+=1
-    
+
         else:
 
             Scorewindow = tkinter.Tk()
@@ -476,7 +480,7 @@ def main():
             else:
                 keepPlaying = False
                 sys.exit()
-    
+
 
 
 main()
