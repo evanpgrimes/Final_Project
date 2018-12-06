@@ -89,6 +89,7 @@ def level(currentLevel,player):
     def onClickNext():
         ansWindow.destroy()
 
+
     player.resetScore()
     #Question reader
     #
@@ -131,6 +132,9 @@ def level(currentLevel,player):
 
         EnterButton = tkinter.Button(qWindow, text="Enter", bg="grey", fg="black", command=onClickEnter)
         EnterButton.grid(column=1, row=18)
+
+        quitLevel = tkinter.Button(qWindow, text="Quit", bg="white", fg="red", command=sys.exit)
+        quitLevel.grid(column=2, row=0)
 
         qWindow.mainloop()
         # qWindow.protocol("WM_DELETE_WINDOW",sys.exit())
@@ -371,6 +375,8 @@ def main():
         Scorewindow.destroy()
         level(currentLevel+1,Student)
 
+    file = open("High Scores.txt","r")
+    highScores = file.read()
 
     label1 = tkinter.Label(window, text="\tWelcome to our Education Game!\n\n", font=("Times New Roman", 20))
     label1.grid(column=1, row=2)
@@ -384,11 +390,18 @@ def main():
     label3 = tkinter.Label(window, text="\n\n\tYou will begin on Level 1 with the chance to play a fun game after passing each level!\n\n", font=("Times New Roman", 20))
     label3.grid(column=1, row=10)
 
+    label4 = tkinter.Label(window, text=highScores, font=("Times New Roman", 20))
+    label4.grid(column=1, row=15)
+
+
+    label5 = tkinter.Label(window, text="High Scores: ", font=("Times New Roman", 20))
+    label5.grid(column=1, row=13)
+
     quitButton = tkinter.Button(window, text="Quit", bg="white", fg="red", command=lambda:closeWindow(window))
     quitButton.grid(column=2, row=0)
 
     submitButton = tkinter.Button(window, text="Submit", bg="grey", fg="black", command=onClickSubmit)
-    submitButton.grid(column=1, row=18)
+    submitButton.grid(column=1, row=20)
 
     window.mainloop()
     # window.protocol("WM_DELETE_WINDOW",sys.exit())
@@ -401,8 +414,10 @@ def main():
     level(1,Student)
     currentLevel=1
     keepPlaying = True
-    level_high_score(currentLevel,Student.score)
+    
     while keepPlaying:
+        level_high_score(currentLevel,Student.score)
+
         if Student.score >=1.0:
             Scorewindow = tkinter.Tk()
             Scorewindow.geometry("2000x2000")
