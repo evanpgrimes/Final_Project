@@ -411,20 +411,20 @@ def main():
             label2.grid(column=1, row=5)
 
             quit = tkinter.Button(Scorewindow, text="Quit", bg="white", fg="red", command=sys.exit)
-            quit.grid(column=1, row=15)
+            quit.grid(column=2, row=15)
 
             PlayPong = tkinter.Button(Scorewindow, text="Play Pong?", bg="grey", fg="black", command=onClickPong)
             PlayPong.grid(column=1, row=8 )
 
 
             NextLevel = tkinter.Button(Scorewindow, text="Next Level", bg="grey", fg="black", command=onClickNext)
-            NextLevel.grid(column=4, row=8 )
+            NextLevel.grid(column=3, row=8 )
 
 
             Scorewindow.mainloop()
 
             currentLevel+=1
-            keepPlaying = False
+    
         else:
 
             Scorewindow = tkinter.Tk()
