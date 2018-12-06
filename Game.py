@@ -1,6 +1,6 @@
 # Learning Game
 
-import random, tkinter, tkinter.ttk, sys, turtle, os
+import random, tkinter, tkinter.ttk, sys, turtle, os, MiniGames
 
 
 class Player:
