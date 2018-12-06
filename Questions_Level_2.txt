@@ -1,4 +1,18 @@
 What is 23 * 4? ~A. 46 ~B. 64 ~C. 92 ~D. 232 ~C
 What is the largest planet in the solar system? ~A. Earth ~B. Pluto ~C. Saturn ~D. Jupiter ~D
-1's and 0's are used to represent numbers in Computer Science. ~A. True ~B. False ~A
+1's and 0's are used to represent numbers and letters to Computers. ~A. True ~B. False ~A
+What continent is New Zealand a part of? ~A. Asia ~B. Europe ~C. Oceania ~D. South America ~C
+What are the two compiuands created by photosynthesis? ~A. Glucose & Water ~B. CO2 & Water ~C. Water & Oxygen ~D. Oxygen & Glucose ~D
+What is the distance around a circle called? ~A. Circumfrence ~B. Radius ~C. Diameter ~D. Diadius ~A
+How many equal-length sides does a scalene triangle have? ~A. One ~B. Two ~C. Three ~D. None ~D
+What is the nickname for the bell of the clock at the Palace of Westminster in London? ~A. Big Ben ~B. Parliament ~C. The Castle ~D. The Clock Tower ~A
+The horse is the fastest land animal? ~A. True ~B. False ~B
+What existing bird has the largest wingspan? ~A. Albatross ~B. Swan ~C. Stork ~D. Pterodactyl ~A
+What is the biggest animal that has ever lived? ~A. Blue Whale ~B. African Elephant ~C. Apatosaurus ~D. Spinosaurus ~A
+What is (22 / 11) * 10? ~A. 11 ~B. 20 ~C. 22 ~D. 33 ~B
+Mitochondria it the powerhouse of the cell. ~A. True ~B. False ~A
+How many eggs in a baker's dozen? ~A. 13 ~B. 12 ~C. 11 ~D. 6 ~A
+Colonists had to follow the laws of? ~A. America ~B. Britain ~C. China ~D. Russia ~A
+What was one political result of the fall of Rome? ~A. Decline of Christianity ~B. Lack of central government ~C. Rise of cities ~D. Strong Economy ~B
+An acute triangle only contains only one acute angle? ~A True ~B. False ~B
 
