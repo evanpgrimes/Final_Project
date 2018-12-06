@@ -110,7 +110,7 @@ def level(currentLevel,player):
     newWindow.mainloop()
     # newWindow.protocol("WM_DELETE_WINDOW",sys.exit())
 
-    for i in range(0,10):
+    for i in range(0,2):
 
         qWindow = tkinter.Tk()
         qWindow.geometry("2000x2000")
@@ -276,10 +276,10 @@ def pong_game():
     wn.onkeypress(paddle_a_down, "s")
     wn.onkeypress(paddle_b_up, "Up")
     wn.onkeypress(paddle_b_down, "Down")
-
+    flag = True
     # Main game loop
-    while True:
-        while score_a != 3 and score_b != 3:
+    while flag == True:
+        
             wn.update()
 
             # Move the ball
@@ -307,6 +307,9 @@ def pong_game():
                 ball.goto(0, 0)
                 ball.dx *= -1
 
+                if score_a >= 3:
+                    flag = False
+
             elif ball.xcor() < -350:
                 score_b += 1
                 pen.clear()
@@ -314,6 +317,8 @@ def pong_game():
                 ball.goto(0, 0)
                 ball.dx *= -1
 
+                if score_b >= 3:
+                    flag = False
             # Paddle and ball collisions
             if ball.xcor() < -340 and ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50:
                 ball.dx *= -1
@@ -348,12 +353,18 @@ def main():
         global userName   
         userName = str(text.get())
         window.destroy()
-        pong_game()
 
     def onClickRepeat():
         global replayLevel
         replayLevel = str(replay.get())
         Scorewindow.destroy()
+
+    def onClickPong():
+        pong_game()
+
+    def onClickNext():
+        Scorewindow.destroy()
+        level(currentLevel+1,Student)
 
 
     label1 = tkinter.Label(window, text="\tWelcome to our Education Game!\n\n", font=("Times New Roman", 20))
@@ -387,7 +398,7 @@ def main():
     keepPlaying = True
     level_high_score(currentLevel,Student.score)
     while keepPlaying:
-        if Student.score >=7.0:
+        if Student.score >=1.0:
             Scorewindow = tkinter.Tk()
             Scorewindow.geometry("2000x2000")
             Scorewindow.title("level " + str(currentLevel) + " Score")
@@ -400,7 +411,15 @@ def main():
             label2.grid(column=1, row=5)
 
             quit = tkinter.Button(Scorewindow, text="Quit", bg="white", fg="red", command=sys.exit)
-            quit.grid(column=1, row=8)
+            quit.grid(column=1, row=15)
+
+            PlayPong = tkinter.Button(Scorewindow, text="Play Pong?", bg="grey", fg="black", command=onClickPong)
+            PlayPong.grid(column=1, row=8 )
+
+
+            NextLevel = tkinter.Button(Scorewindow, text="Next Level", bg="grey", fg="black", command=onClickNext)
+            NextLevel.grid(column=4, row=8 )
+
 
             Scorewindow.mainloop()
 
@@ -426,6 +445,7 @@ def main():
 
             RepeatButton = tkinter.Button(Scorewindow, text="Enter", bg="grey", fg="black", command=onClickRepeat)
             RepeatButton.grid(column=1, row=18)
+
 
             Scorewindow.mainloop()
 
