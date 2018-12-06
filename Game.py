@@ -381,7 +381,7 @@ def main():
     text = tkinter.Entry(window, width=10)
     text.grid(column=1, row=7)
 
-    label3 = tkinter.Label(window, text="\n\n\tYou will begin on Level 1 with 0 Game Credits\n\n", font=("Times New Roman", 20))
+    label3 = tkinter.Label(window, text="\n\n\tYou will begin on Level 1 with the chance to play a fun game after passing each level!\n\n", font=("Times New Roman", 20))
     label3.grid(column=1, row=10)
 
     quitButton = tkinter.Button(window, text="Quit", bg="white", fg="red", command=lambda:closeWindow(window))
