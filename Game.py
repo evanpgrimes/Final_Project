@@ -433,7 +433,7 @@ def main():
             quit = tkinter.Button(Scorewindow, text="Quit", bg="white", fg="red", command=sys.exit)
             quit.grid(column=3, row=1)
 
-            PlayPong = tkinter.Button(Scorewindow, text="Play Pong?", bg="grey", fg="black", command=onClickPong)
+            PlayPong = tkinter.Button(Scorewindow, text="Play Game?", bg="grey", fg="black", command=onClickPong)
             PlayPong.grid(column=1, row=8 )
 
 
