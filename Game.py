@@ -279,48 +279,49 @@ def pong_game():
 
     # Main game loop
     while True:
-        wn.update()
+        while score_a != 3 and score_b != 3:
+            wn.update()
 
-        # Move the ball
-        ball.setx(ball.xcor() + ball.dx)
-        ball.sety(ball.ycor() + ball.dy)
+            # Move the ball
+            ball.setx(ball.xcor() + ball.dx)
+            ball.sety(ball.ycor() + ball.dy)
 
-        # Border checking
+            # Border checking
 
-        # Top and bottom
-        if ball.ycor() > 290:
-            ball.sety(290)
-            ball.dy *= -1
-            os.system("afplay bounce.wav&")
+            # Top and bottom
+            if ball.ycor() > 290:
+                ball.sety(290)
+                ball.dy *= -1
+                os.system("afplay bounce.wav&")
 
-        elif ball.ycor() < -290:
-            ball.sety(-290)
-            ball.dy *= -1
-            os.system("afplay bounce.wav&")
+            elif ball.ycor() < -290:
+                ball.sety(-290)
+                ball.dy *= -1
+                os.system("afplay bounce.wav&")
 
-        # Left and right
-        if ball.xcor() > 350:
-            score_a += 1
-            pen.clear()
-            pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
-            ball.goto(0, 0)
-            ball.dx *= -1
+            # Left and right
+            if ball.xcor() > 350:
+                score_a += 1
+                pen.clear()
+                pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+                ball.goto(0, 0)
+                ball.dx *= -1
 
-        elif ball.xcor() < -350:
-            score_b += 1
-            pen.clear()
-            pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
-            ball.goto(0, 0)
-            ball.dx *= -1
+            elif ball.xcor() < -350:
+                score_b += 1
+                pen.clear()
+                pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+                ball.goto(0, 0)
+                ball.dx *= -1
 
-        # Paddle and ball collisions
-        if ball.xcor() < -340 and ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50:
-            ball.dx *= -1
-            os.system("afplay bounce.wav&")
+            # Paddle and ball collisions
+            if ball.xcor() < -340 and ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50:
+                ball.dx *= -1
+                os.system("afplay bounce.wav&")
 
-        elif ball.xcor() > 340 and ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50:
-            ball.dx *= -1
-            os.system("afplay bounce.wav&")
+            elif ball.xcor() > 340 and ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50:
+                ball.dx *= -1
+                os.system("afplay bounce.wav&")
 
     wd.exitonclick()
 
@@ -347,6 +348,7 @@ def main():
         global userName   
         userName = str(text.get())
         window.destroy()
+        pong_game()
 
     def onClickRepeat():
         global replayLevel
