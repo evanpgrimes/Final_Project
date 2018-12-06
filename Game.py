@@ -322,9 +322,10 @@ def pong_game():
             ball.dx *= -1
             os.system("afplay bounce.wav&")
 
+    wd.exitonclick()
 
 def main():
-
+    
 
     def onClickCombo():
         label.configure(text="input: " + combo.get())
@@ -351,6 +352,7 @@ def main():
         global replayLevel
         replayLevel = str(replay.get())
         Scorewindow.destroy()
+
 
     label1 = tkinter.Label(window, text="\tWelcome to our Education Game!\n\n", font=("Times New Roman", 20))
     label1.grid(column=1, row=2)
