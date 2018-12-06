@@ -333,7 +333,6 @@ def pong_game():
             ball.dx *= -1
             os.system("afplay bounce.wav&")
 
-    wd.exitonclick()
 
 
 def main():
