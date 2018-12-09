@@ -111,7 +111,7 @@ def level(currentLevel,player):
     newWindow.mainloop()
     # newWindow.protocol("WM_DELETE_WINDOW",sys.exit())
 
-    for i in range(0,2):
+    for i in range(0,10):
 
         qWindow = tkinter.Tk()
         qWindow.geometry("2000x2000")
@@ -190,7 +190,7 @@ def level_high_score(level, score):
     file_1 = open("High Scores.txt", "w")
     count = 1
     line = 0
-    while count <= 3:
+    while count <= 2:
         x = int(scoreList[line][-1])
         if count == level:
             if score > x:
@@ -339,6 +339,46 @@ def pong_game():
 
 
 
+def endGame(Student):
+
+
+    def repeat():
+        Winwindow.destroy()
+        level(1,Student)
+        
+
+    def onClickPong():
+        MiniGames.pong_game()
+
+
+    def onClickSnake():
+        MiniGames.snake()
+
+    Winwindow = tkinter.Tk()
+    Winwindow.geometry("2000x2000")
+    Winwindow.title("Congrats")
+
+    label1 = tkinter.Label(Winwindow, text="\nYou have completed the game!!\n\n", font=("Times New Roman", 20))
+    label1.grid(column=1, row=2)
+
+    label2 = tkinter.Label(Winwindow, text="\tYou can either choose to start the game over at level 1 or play Snake again!\n\n", font=("Times New Roman", 20))
+    label2.grid(column=1, row=5)
+
+    repeat =  tkinter.Button(Winwindow, text="Restart Game", bg="white", fg="red", command=repeat)
+    repeat.grid(column=2, row=12)
+
+    quit = tkinter.Button(Winwindow, text="Quit", bg="white", fg="red", command=sys.exit)
+    quit.grid(column=3, row=1)
+
+    PlaySnake = tkinter.Button(Winwindow, text="Play Snake?", bg="grey", fg="black", command=onClickSnake)
+    PlaySnake.grid(column=1, row=12)
+
+
+
+    Winwindow.mainloop()
+
+
+
 def main():
 
 
@@ -376,8 +416,14 @@ def main():
         #spaceinvaders.__main__()
 
     def onClickNext():
-        Scorewindow.destroy()
-        level(currentLevel+1,Student)
+
+        if currentLevel == 2:
+            Scorewindow.destroy()
+            endGame(Student)
+        else:
+
+            Scorewindow.destroy()
+            level(currentLevel+1,Student)
 
     file = open("High Scores.txt","r")
     highScores = file.read()
@@ -419,10 +465,11 @@ def main():
     currentLevel=1
     keepPlaying = True
 
-    while keepPlaying:
+    while keepPlaying == True:
         level_high_score(currentLevel,Student.score)
 
-        if Student.score >=1.0:
+        if Student.score >=7.0:
+
             Scorewindow = tkinter.Tk()
             Scorewindow.geometry("2000x2000")
             Scorewindow.title("level " + str(currentLevel) + " Score")
@@ -476,7 +523,7 @@ def main():
             global replayLevel
 
             if replayLevel=="y":
-                level(1,Student)
+                level(currentLevel,Student)
             else:
                 keepPlaying = False
                 sys.exit()

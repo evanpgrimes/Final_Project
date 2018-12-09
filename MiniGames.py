@@ -141,16 +141,16 @@ def collide(x1, x2, y1, y2, w1, w2, h1, h2):
 	else:return False
 
 def die(screen, score):
-	f=pygame.font.SysFont('Arial', 30);t=f.render('Your score was: '+str(score), True, (0, 0, 0));screen.blit(t, (10, 270));pygame.display.update();pygame.time.wait(2000);sys.exit(0)
+	f=pygame.font.SysFont('Arial', 30);t=f.render('Your score was: '+str(score), True, (0, 0, 0));screen.blit(t, (10, 270));pygame.display.update();pygame.time.wait(2000);pygame.quit()
 
 def snake():
-
+    running = True
     xs = [290, 290, 290, 290, 290];ys = [290, 270, 250, 230, 210];dirs = 0;score = 0;applepos = (random.randint(0, 590), random.randint(0, 590));pygame.init();s=pygame.display.set_mode((600, 600));pygame.display.set_caption('Snake');appleimage = pygame.Surface((10, 10));appleimage.fill((0, 255, 0));img = pygame.Surface((20, 20));img.fill((255, 0, 0));f = pygame.font.SysFont('Arial', 20);clock = pygame.time.Clock()
-    while True:
+    while running == True:
     	clock.tick(10)
     	for e in pygame.event.get():
     		if e.type == QUIT:
-    			sys.exit(0)
+    			running == False
     		elif e.type == KEYDOWN:
     			if e.key == K_UP and dirs != 0:dirs = 2
     			elif e.key == K_DOWN and dirs != 2:dirs = 0
